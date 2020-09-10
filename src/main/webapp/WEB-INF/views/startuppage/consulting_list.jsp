@@ -59,7 +59,7 @@
             <tr>        
                 <th>전문가명</th>
                 <th>컨설팅 신청 날짜</th>
-                
+                <th></th>
             </tr>
           </thead>
 
@@ -67,98 +67,94 @@
  			<c:forEach var="conlist" items="${conlist}" >     
    				<tr align="center">
 			      <c:if test = "${conlist.status==0}">
-			      	<td>${conlist.expname}</td>
-			      	<td>${conlist.reqdate}</td>
+			      	<td><a href = "#">${conlist.expname}</a></td>
+			      	<td><fmt:formatDate value="${conlist.reqdate}" pattern="yyyy-MM-dd KK:mm"/></td>
+			      	<td><input type = button class="btn btn-outline-secondary" value = "철회"></td>
 			      </c:if>
 	    	</tr>
   		</c:forEach>   
 	</table>
 </div>
 
-	   <div class="row mt-5">
-          <div class="col text-center">
-            <div class="block-27">
-              <ul>
-              	<c:if test="${pagevo.startPage != 1}">
-	                <li><a href="${contextPath}/startuppage/consulting_list.do?nowPage=${pagevo.startPage-1}&cntPerPage=${pagevo.cntPerPage}">&lt;</a></li>
-	            </c:if>
-	            <c:forEach begin = "${pagevo.startPage}" end = "${pagevo.endPage}" var="idx">
-	            	<c:choose>
-	            	<c:when test="${idx == pagevo.nowPage }">
-	                <li class="active"><span>${idx}</span></li>
-	                </c:when>
-	                <c:when test="${idx!= pagevo.nowPage}">
-	                <li><a href="${contextPath}/startuppage/consulting_list.do?nowPage=${idx}&cntPerPage=${pagevo.cntPerPage}"> ${idx} </a></li>
-	                </c:when>
-	                </c:choose>
-	             </c:forEach>
-	              <c:if test="${pagevo.endPage != pagevo.lastPage}">
-	                <li><a href="${contextPath}/startuppage/manu_estilist.do?nowPage=${pagevo.endPage+1 }&cntPerPage=${pagevo.cntPerPage}">&gt;</a></li>
-	              </c:if>
-              </ul>
-              
-            </div>
-          </div>
-         
-        </div>
-        
-        
-        
-        
-        
-        
-        
-        
         <div class="container">
-		<h3>요청한 컨설팅 내역</h3>
+		<h3>진행중인 컨설팅 내역</h3>
       <table class="table">
           <thead id="thead-c">
             <tr>        
                 <th>전문가명</th>
                 <th>컨설팅 신청 날짜</th>
-                
+                <th></th>
             </tr>
           </thead>
 
  		<tbody>
  			<c:forEach var="conlist" items="${conlist}" >     
    				<tr align="center">
-			      <c:if test = "${conlist.status==0}">
-			      	<td>${conlist.expname}</td>
-			      	<td>${conlist.reqdate}</td>
+			      <c:if test = "${conlist.status==1}">
+			      	<td><a href = "#">${conlist.expname}</a></td>
+			      	<td><fmt:formatDate value="${conlist.reqdate}" pattern="yyyy-MM-dd KK:mm"/></td>
+			      	<td><input type = button class="btn btn-outline-secondary" value = "철회"></td>
 			      </c:if>
 	    	</tr>
   		</c:forEach>   
 	</table>
 </div>
 
-	   <div class="row mt-5">
-          <div class="col text-center">
-            <div class="block-27">
-              <ul>
-              	<c:if test="${pagevo.startPage != 1}">
-	                <li><a href="${contextPath}/startuppage/consulting_list.do?nowPage=${pagevo.startPage-1}&cntPerPage=${pagevo.cntPerPage}">&lt;</a></li>
-	            </c:if>
-	            <c:forEach begin = "${pagevo.startPage}" end = "${pagevo.endPage}" var="idx">
-	            	<c:choose>
-	            	<c:when test="${idx == pagevo.nowPage }">
-	                <li class="active"><span>${idx}</span></li>
-	                </c:when>
-	                <c:when test="${idx!= pagevo.nowPage}">
-	                <li><a href="${contextPath}/startuppage/consulting_list.do?nowPage=${idx}&cntPerPage=${pagevo.cntPerPage}"> ${idx} </a></li>
-	                </c:when>
-	                </c:choose>
-	             </c:forEach>
-	              <c:if test="${pagevo.endPage != pagevo.lastPage}">
-	                <li><a href="${contextPath}/startuppage/manu_estilist.do?nowPage=${pagevo.endPage+1 }&cntPerPage=${pagevo.cntPerPage}">&gt;</a></li>
-	              </c:if>
-              </ul>
-              
-            </div>
-          </div>
-         
-        </div>
-		 <a href = "${contextPath}/startuppage/manu_estilist_sh.do">이전으로</a>
+  
+<div class="container">
+		<h3>완료된 컨설팅 내역</h3>
+      <table class="table">
+          <thead id="thead-c">
+            <tr>        
+                <th>전문가명</th>
+                <th>컨설팅 신청 날짜</th>
+                <th></th>
+            </tr>
+          </thead>
+
+ 		<tbody>
+ 			<c:forEach var="conlist" items="${conlist}" >     
+   				<tr align="center">
+			      <c:if test = "${conlist.status==2}">
+			      	<td><a href = "#">${conlist.expname}</a></td>
+			      	<td><fmt:formatDate value="${conlist.reqdate}" pattern="yyyy-MM-dd KK:mm"/></td>
+			      	<td><input type = button class="btn btn-outline-secondary" value = "삭제"></td>
+			      </c:if>
+	    	</tr>
+  		</c:forEach>   
+	</table>
+</div>
+
+
+
+
+
+<div class="container">
+		<h3>거절된 컨설팅 내역</h3>
+      <table class="table">
+          <thead id="thead-c">
+            <tr>        
+                <th>전문가명</th>
+                <th>컨설팅 신청 날짜</th>
+                <th></th>
+            </tr>
+          </thead>
+
+ 		<tbody>
+ 			<c:forEach var="conlist" items="${conlist}" >     
+   				<tr align="center">
+			      <c:if test = "${conlist.status==2}">
+			      	<td><a href = "#">${conlist.expname}</a></td>
+			      	<td><fmt:formatDate value="${conlist.reqdate}" pattern="yyyy-MM-dd KK:mm"/></td>
+			      	<td><input type = button class="btn btn-outline-secondary" value = "삭제"></td>
+			      </c:if>
+	    	</tr>
+  		</c:forEach>   
+	</table>
+</div>
+<a href = "${contextPath}/startuppage/manu_estilist_sh.do">이전으로</a>
+        
+		 
 	  <script src="${contextPath}/resources/js/jquery.min.js"></script>
   	  <script src="${contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
   	  <script src="${contextPath}/resources/js/popper.min.js"></script>
