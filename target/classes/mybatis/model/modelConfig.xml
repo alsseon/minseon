@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		
+		<typeAlias type="com.myspring.minseon.startupstatus.vo.ManufacVO"  alias="manufacvo" />
+		<typeAlias type="com.myspring.minseon.startupstatus.vo.PageVO"  alias="pagevo" />
+		<typeAlias type="com.myspring.minseon.startup.vo.StartuppageVO"  alias="startuppagevo" />
+		<typeAlias type="com.myspring.minseon.consulting.vo.ConsultingVO"  alias="consultingvo" />
+	</typeAliases>
+</configuration>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "mapper.startup">
+	<select id="selectAllstartup" resultType="manufacvo">
+		<![CDATA[
+			SELECT startup_name, sttoes_date, sttoes_status 
+			FROM ( SELECT startup_name, sttoes_date, sttoes_status,ROW_NUMBER() 
+			OVER(ORDER BY sttoes_date DESC) 
+			AS RNUM FROM board2) MP 
+			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY sttoes_date DESC
+		]]>
+	</select>
+	<select id="listCount" resultType="int">
+	<![CDATA[
+		SELECT COUNT(*)
+		  FROM board2
+	]]>
+	</select>
+	<update id="upstatus_estreceipt"  parameterType="String">
+     <![CDATA[
+	     update board2
+	     set sttoes_status=1
+	     where
+	     startup_name=#{startup_name}
+      ]]>
+      </update>
+     <update id="upstatus_order_request"  parameterType="String">
+     <![CDATA[
+	     update board2
+	     set sttoes_status=2
+	     where
+	     startup_name=#{startup_name}
+      ]]>
+      </update>
+	  <update id="upstatus_produc_receipt"  parameterType="String">
+      <![CDATA[
+	     update board2
+	     set sttoes_status=3
+	     where
+	     startup_name=#{startup_name}
+       ]]>
+       </update>
+       <update id="upstatus_invoice_complete"  parameterType="String">
+      <![CDATA[
+	     update board2
+	     set sttoes_status=4
+	     where
+	     startup_name=#{startup_name}
+       ]]>
+       </update>
+		       <update id="upstatus_complete"  parameterType="String">
+      <![CDATA[
+	     update board2
+	     set sttoes_status=5
+	     where
+	     startup_name=#{startup_name}
+       ]]>
+       </update>
+</mapper>
